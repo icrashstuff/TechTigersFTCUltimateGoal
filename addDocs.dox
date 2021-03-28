@@ -1,6 +1,9 @@
-/*! \mainpage TechTigersFTCUltimateGoal
+/*! \mainpage Tech Tigers FTC Program Docs
  *
- * Program(s) for the Tech Tigers #15947 Robot During the 2020-2021 Season
+ * Documentation for program(s) used by the Tech Tigers #15947 Robot During the 2020-2021 Season
+ *
+ * \subsection Goal Goal of the docs
+ * The goal for documentation is so that another team could understand why and how the program(s) work
  *
  * \subsection Classes
  * 
