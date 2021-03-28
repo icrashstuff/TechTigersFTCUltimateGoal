@@ -216,6 +216,22 @@ public class techTigers extends LinearOpMode
         FLD+=g1_lStick_x_abs;FRD-=g1_lStick_x_abs;
         BLD-=g1_lStick_x_abs;BRD+=g1_lStick_x_abs;
         break;
+      case 2:
+        BLD+=Math.sqrt((g1_lStick_x_abs*g1_lStick_x_abs)+(g1_lStick_y_abs*g1_lStick_y_abs);
+        FRD+=Math.sqrt((g1_lStick_x_abs*g1_lStick_x_abs)+(g1_lStick_y_abs*g1_lStick_y_abs);
+        break;
+      case 4:
+      FLD-=Math.sqrt((g1_lStick_x_abs*g1_lStick_x_abs)+(g1_lStick_y_abs*g1_lStick_y_abs);
+      BRD-=Math.sqrt((g1_lStick_x_abs*g1_lStick_x_abs)+(g1_lStick_y_abs*g1_lStick_y_abs);
+      break;
+      case 6:
+      BLD-=Math.sqrt((g1_lStick_x_abs*g1_lStick_x_abs)+(g1_lStick_y_abs*g1_lStick_y_abs);
+      FRD-=Math.sqrt((g1_lStick_x_abs*g1_lStick_x_abs)+(g1_lStick_y_abs*g1_lStick_y_abs);
+      break;
+      case 8:
+      FLD+=Math.sqrt((g1_lStick_x_abs*g1_lStick_x_abs)+(g1_lStick_y_abs*g1_lStick_y_abs);
+      BRD+=Math.sqrt((g1_lStick_x_abs*g1_lStick_x_abs)+(g1_lStick_y_abs*g1_lStick_y_abs);
+      break;
     }
     FL.setPower(FLD*0.77);FR.setPower(FRD*0.85);
     BL.setPower(BLD*0.77);BR.setPower(BRD*1.00);
