@@ -200,38 +200,46 @@ public class techTigers extends LinearOpMode
     q = quad(g1_lStick_x,g1_lStick_y);
     switch(q)
     {
+    //Translate Forward
       case 1:
         FLD-=g1_lStick_y_abs;FRD-=g1_lStick_y_abs;
         BLD-=g1_lStick_y_abs;BRD-=g1_lStick_y_abs;
         break;
-      case 3:
+    //Translate Left
+        case 3:
         FLD-=g1_lStick_x_abs;FRD+=g1_lStick_x_abs;
         BLD+=g1_lStick_x_abs;BRD-=g1_lStick_x_abs;
         break;
-      case 5:
+    //Translate Backwards  
+        case 5:
         FLD+=g1_lStick_y_abs;FRD+=g1_lStick_y_abs;
         BLD+=g1_lStick_y_abs;BRD+=g1_lStick_y_abs;
         break;
-      case 7:
+    //Translate Right  
+        case 7:
         FLD+=g1_lStick_x_abs;FRD-=g1_lStick_x_abs;
         BLD-=g1_lStick_x_abs;BRD+=g1_lStick_x_abs;
         break;
-      case 2:
+    //Front Left Diagonal   
+        case 2:
         BLD+=Math.sqrt((g1_lStick_x_abs*g1_lStick_x_abs)+(g1_lStick_y_abs*g1_lStick_y_abs);
         FRD+=Math.sqrt((g1_lStick_x_abs*g1_lStick_x_abs)+(g1_lStick_y_abs*g1_lStick_y_abs);
         break;
-      case 4:
-      FLD-=Math.sqrt((g1_lStick_x_abs*g1_lStick_x_abs)+(g1_lStick_y_abs*g1_lStick_y_abs);
-      BRD-=Math.sqrt((g1_lStick_x_abs*g1_lStick_x_abs)+(g1_lStick_y_abs*g1_lStick_y_abs);
-      break;
-      case 6:
-      BLD-=Math.sqrt((g1_lStick_x_abs*g1_lStick_x_abs)+(g1_lStick_y_abs*g1_lStick_y_abs);
-      FRD-=Math.sqrt((g1_lStick_x_abs*g1_lStick_x_abs)+(g1_lStick_y_abs*g1_lStick_y_abs);
-      break;
-      case 8:
-      FLD+=Math.sqrt((g1_lStick_x_abs*g1_lStick_x_abs)+(g1_lStick_y_abs*g1_lStick_y_abs);
-      BRD+=Math.sqrt((g1_lStick_x_abs*g1_lStick_x_abs)+(g1_lStick_y_abs*g1_lStick_y_abs);
-      break;
+    //Back Left Diagonal   
+        case 4:
+        FLD-=Math.sqrt((g1_lStick_x_abs*g1_lStick_x_abs)+(g1_lStick_y_abs*g1_lStick_y_abs);
+        BRD-=Math.sqrt((g1_lStick_x_abs*g1_lStick_x_abs)+(g1_lStick_y_abs*g1_lStick_y_abs);
+        break;
+    //Back Right Diagonal    
+        case 6:
+        BLD-=Math.sqrt((g1_lStick_x_abs*g1_lStick_x_abs)+(g1_lStick_y_abs*g1_lStick_y_abs);
+        FRD-=Math.sqrt((g1_lStick_x_abs*g1_lStick_x_abs)+(g1_lStick_y_abs*g1_lStick_y_abs);
+        break;
+    //Front Right Diagonal
+        case 8:
+        FLD+=Math.sqrt((g1_lStick_x_abs*g1_lStick_x_abs)+(g1_lStick_y_abs*g1_lStick_y_abs);
+        BRD+=Math.sqrt((g1_lStick_x_abs*g1_lStick_x_abs)+(g1_lStick_y_abs*g1_lStick_y_abs);
+        break;
     }
     FL.setPower(FLD*0.77);FR.setPower(FRD*0.85);
     BL.setPower(BLD*0.77);BR.setPower(BRD*1.00);
