@@ -204,15 +204,15 @@ public class techTigers extends LinearOpMode
         FLD-=g1_lStick_y_abs;FRD-=g1_lStick_y_abs;
         BLD-=g1_lStick_y_abs;BRD-=g1_lStick_y_abs;
         break;
-      case 2:
+      case 3:
         FLD-=g1_lStick_x_abs;FRD+=g1_lStick_x_abs;
         BLD+=g1_lStick_x_abs;BRD-=g1_lStick_x_abs;
         break;
-      case 3:
+      case 5:
         FLD+=g1_lStick_y_abs;FRD+=g1_lStick_y_abs;
         BLD+=g1_lStick_y_abs;BRD+=g1_lStick_y_abs;
         break;
-      case 4:
+      case 7:
         FLD+=g1_lStick_x_abs;FRD-=g1_lStick_x_abs;
         BLD-=g1_lStick_x_abs;BRD+=g1_lStick_x_abs;
         break;
@@ -222,53 +222,55 @@ public class techTigers extends LinearOpMode
     
   }
 
-private int quad(double x, double y)
-{
-    /* 
-     *    \                 /
-     *      \      1      /  
-     *        \         /    
-     *          \     /      
-     *    2       \ /        
-     *            / \      4 
-     *          /     \      
-     *        /         \    
-     *      /      3      \  
-     *    /                 \
-     */
-    if (x>-0.5*y && x < 0.5*y) {
-
-      return 1;
+  private int quad(double x, double y)
+  {
+    /*
+    *        @    1    @          
+    *     2   @       @  8        
+    * @        @     @         @  
+    *     @     @   @      @      
+    *         @  @ @  @           
+    *   3         @          7    
+    *         @  @ @  @           
+    *     @     @   @      @      
+    * @        @     @         @  
+    *    4    @       @   6       
+    *        @    5    @          
+    */
+    
+    if (x < 0.5*y) // Check if we are in the 1-4 range
+    {
+        if(x > -2*y) // Check if we are in the 1-2 range
+        {
+            if(x > -0.5*y) // Check if we are in 1's range
+                return 1;
+            else
+                return 2;
+        }
+        else
+        {
+            if(x < 2*y) // Check if we are in 3's range
+                return 3;
+            else
+                return 4;
+        }
     }
-    if (x< 0.5*y && x < -0.5*y && x > -2*y){
-      return 2;
-
+    else
+    {
+        if(x < -2*y) // Check if we are in the 5-6 range
+        {
+            if(x < -0.5*y) // Check if we are in 5's range
+                return 5;
+            else
+                return 6;
+        }
+        else
+        {
+            if(x > 2*y) // Check if we are in 7's range
+                return 7;
+            else
+                return 8;
+        }
     }
-    if (x < 2*y && x < -2*y ) {
-      return 3;
-
-    }
-    if (x < 0.5*y && x > 2*y) {
-      return 4;
-      
-    }
-    if (x < -0.5*y && x > 0.5*y) {
-      return 5;
-
-    }
-    if (x > 0.5*y && x > -0.5*y && x < -2*y) {
-      return 6;
-
-    }
-    if {x > 2y && x > -2*y} {
-      return 7;
-
-    }
-    if (x > -2*y && x > 0.5*y && x < 2*y){
-      return 8;
-
-
-    }
- 
-  }
+}
 }
