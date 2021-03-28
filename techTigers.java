@@ -194,6 +194,8 @@ public class techTigers extends LinearOpMode
       FLD+=g1_rStick_x_abs;FRD-=g1_rStick_x_abs;
       BLD+=g1_rStick_x_abs;BRD-=g1_rStick_x_abs;
     }
+
+    
     // End Rotate
     q = quad(g1_lStick_x,g1_lStick_y);
     switch(q)
@@ -220,8 +222,6 @@ public class techTigers extends LinearOpMode
     
   }
 
-
-
 private int quad(double x, double y)
 {
     /* 
@@ -236,19 +236,39 @@ private int quad(double x, double y)
      *      /      3      \  
      *    /                 \
      */
-    if(x > y)
-    {
-        if(x > -y)
-            return 4;
-        else
-            return 3;
+    if (x>-0.5*y && x < 0.5*y) {
+
+      return 1;
     }
-    else
-    {
-        if(x > -y)
-            return 1;
-        else
-            return 2;
+    if (x< 0.5*y && x < -0.5*y && x > -2*y){
+      return 2;
+
     }
+    if (x < 2*y && x < -2*y ) {
+      return 3;
+
+    }
+    if (x < 0.5*y && x > 2*y) {
+      return 4;
+      
+    }
+    if (x < -0.5*y && x > 0.5*y) {
+      return 5;
+
+    }
+    if (x > 0.5*y && x > -0.5*y && x < -2*y) {
+      return 6;
+
+    }
+    if {x > 2y && x > -2*y} {
+      return 7;
+
+    }
+    if (x > -2*y && x > 0.5*y && x < 2*y){
+      return 8;
+
+
+    }
+ 
   }
 }
