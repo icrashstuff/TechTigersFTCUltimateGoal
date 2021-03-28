@@ -224,7 +224,18 @@ public class techTigers extends LinearOpMode
 
 private int quad(double x, double y)
 {
-
+    /* 
+     *    \                 /
+     *      \      1      /  
+     *        \         /    
+     *          \     /      
+     *    2       \ /        
+     *            / \      4 
+     *          /     \      
+     *        /         \    
+     *      /      3      \  
+     *    /                 \
+     */
     if(x > y)
     {
         if(x > -y)
