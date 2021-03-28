@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 /**
  * A servo helper class, for the ARM
- * NOTE: Generally this class should not need changes, other than the first 5 variables
+ * \n NOTE: Generally this class should not need changes, other than the first 5 variables
  */
 public class ArmServos {
 
@@ -41,7 +41,7 @@ public class ArmServos {
   
   /**
    * Sets up the servos
-   * NOTE: This must be called before any other functions
+   * \n NOTE: This must be called before any other functions
    */
   public static void setup()
   {
@@ -57,7 +57,7 @@ public class ArmServos {
   
   /**
    * Sets the position of the arc servos
-   * NOTE: The function will not prevent you from nullifing the internalServoOffset at extreme ranges
+   * \n NOTE: The function will not prevent you from nullifing the internalServoOffset at extreme ranges
    * @param position The position to go to
    */
   public static void setArcPosition(double position)
@@ -67,7 +67,7 @@ public class ArmServos {
   
   /**
    * Sets the position of the arc servos
-   * NOTE: The function will not prevent you from nullifing the internalServoOffset at extreme ranges
+   * \n NOTE: The function will not prevent you from nullifing the internalServoOffset at extreme ranges
    * @param position The position to go to
    * @param disableServoOffset When true servoOffset is not added to the position
    */
@@ -89,7 +89,7 @@ public class ArmServos {
   /**
    * Increments the wobble holder servo
    * @param increment The amount to increment the servo by
-   * NOTE: For debugging purposes ONLY!
+   * \n NOTE: For debugging purposes ONLY!
    */
   public static void addToWobbleHolderServos(double increment)
   {
@@ -99,7 +99,7 @@ public class ArmServos {
   /**
    * Increments the arc servos
    * @param increment The amount to increment the servos by
-   * NOTE: For debugging purposes ONLY!
+   * \n NOTE: For debugging purposes ONLY!
    */
   public static void addToArcServos(double increment)
   {
@@ -110,7 +110,7 @@ public class ArmServos {
   
   /**
    * Adds servo telemetry data
-   * NOTE: This does not update telemetry
+   * \n NOTE: This does not update telemetry
    */
   public static void addTelemetry()
   {
