@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import org.firstinspires.ftc.robotcore.external.navigation.Rotation;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -12,7 +13,8 @@ import org.firstinspires.ftc.teamcode.SuperSecretTelemetry;
 @TeleOp(name = "techTigers", group = "")
 public class techTigers extends LinearOpMode
 {
-
+  private double pi = 3.141592653589793;
+  
   private DcMotor FL;
   private DcMotor BL;
   private DcMotor FR;
@@ -54,7 +56,7 @@ public class techTigers extends LinearOpMode
     BL = hardwareMap.dcMotor.get("BL");
     FR = hardwareMap.dcMotor.get("FR");
     BR = hardwareMap.dcMotor.get("BR");
-    Nothing = hardwareMap.dcMotor.get("Nothing");
+    //Nothing = hardwareMap.dcMotor.get("Nothing");
     FR.setDirection(DcMotorSimple.Direction.REVERSE);
     BR.setDirection(DcMotorSimple.Direction.REVERSE);
     waitForStart();
@@ -62,7 +64,7 @@ public class techTigers extends LinearOpMode
     {
       while (opModeIsActive())
       {
-         Nothing.setPower(1.0);
+         //Nothing.setPower(1.0);
         if(gamepad1.right_bumper)
         {
           armServos.low+=0.000025;
@@ -132,24 +134,13 @@ public class techTigers extends LinearOpMode
           armServos.setWobbleHolderPosition(0.09);
         }
         
-        g1_x = gamepad1.x;
+        //g1_x = gamepad1.x;
         
-        if(g1_x)
-        {
-          g1_lStick_x = gamepad1.left_stick_x * 0.75;
-          g1_lStick_y = gamepad1.left_stick_y * 0.75;
-          
-          g1_rStick_x = gamepad1.right_stick_x * 0.899;
-          g1_rStick_y = gamepad1.right_stick_y * 0.99;
-        }
-        else
-        {
-          g1_lStick_x = gamepad1.left_stick_x * 0.99;
-          g1_lStick_y = gamepad1.left_stick_y * 0.99;
+        g1_lStick_x = gamepad1.left_stick_x;
+        g1_lStick_y = gamepad1.left_stick_y;
   
-          g1_rStick_x = gamepad1.right_stick_x * 0.75;
-          g1_rStick_y = gamepad1.right_stick_y * 0.75;
-        }
+        g1_rStick_x = gamepad1.right_stick_x;
+        g1_rStick_y = gamepad1.right_stick_y;
         
         g1_lStick_x_abs = Math.abs(g1_lStick_x);
         g1_lStick_y_abs = Math.abs(g1_lStick_y);
@@ -158,7 +149,7 @@ public class techTigers extends LinearOpMode
         g1_rStick_y_abs = Math.abs(g1_rStick_y);
         translateAndRotate();
         
-        //sst.addTelemetry();
+        sst.addTelemetry();
         telemetry.addData("q", q);
         telemetry.addData("FL Pow", FL.getPower());
         telemetry.addData("FR Pow", FR.getPower());
@@ -182,6 +173,7 @@ public class techTigers extends LinearOpMode
     double FLD = 0.0;
     double BRD = 0.0;
     double BLD = 0.0;
+    /*
     
     // Begin Rotate
     if(g1_rStick_x<-0.01)
@@ -194,61 +186,53 @@ public class techTigers extends LinearOpMode
       FLD+=g1_rStick_x_abs;FRD-=g1_rStick_x_abs;
       BLD+=g1_rStick_x_abs;BRD-=g1_rStick_x_abs;
     }
-    // End Rotate
-    q = quad(g1_lStick_x,g1_lStick_y);
-    switch(q)
-    {
-      case 1:
-        FLD-=g1_lStick_y_abs;FRD-=g1_lStick_y_abs;
-        BLD-=g1_lStick_y_abs;BRD-=g1_lStick_y_abs;
-        break;
-      case 2:
-        FLD-=g1_lStick_x_abs;FRD+=g1_lStick_x_abs;
-        BLD+=g1_lStick_x_abs;BRD-=g1_lStick_x_abs;
-        break;
-      case 3:
-        FLD+=g1_lStick_y_abs;FRD+=g1_lStick_y_abs;
-        BLD+=g1_lStick_y_abs;BRD+=g1_lStick_y_abs;
-        break;
-      case 4:
-        FLD+=g1_lStick_x_abs;FRD-=g1_lStick_x_abs;
-        BLD-=g1_lStick_x_abs;BRD+=g1_lStick_x_abs;
-        break;
-    }
+    
+    // X and Y are swapped because it works
+    double theta = Math.atan2(-g1_lStick_y,g1_lStick_x);
+    double magnitude = Math.sqrt( (g1_lStick_x*g1_lStick_x) + (g1_lStick_y*g1_lStick_y*1.2) );
+    double sin1 = Math.sin(theta+45)*magnitude;
+    double sin2 = Math.sin(theta-45)*magnitude;
+    
+    telemetry.addData("theta", theta);
+    telemetry.addData("magnitude", magnitude);
+    telemetry.addData("sin1", sin1);
+    telemetry.addData("sin2", sin2);
+    
+    FLD+=sin1;FRD+=sin2;
+    BLD+=sin2;BRD+=sin1;
+    
     FL.setPower(FLD*0.77);FR.setPower(FRD*0.85);
     BL.setPower(BLD*0.77);BR.setPower(BRD*1.00);
+    */
+    double theta = Math.atan2(-gamepad1.left_stick_y,gamepad1.left_stick_x);
+    double magnitude = Math.sqrt(gamepad1.left_stick_x*gamepad1.left_stick_x + gamepad1.left_stick_y*gamepad1.left_stick_y);
     
-  }
-
-
-
-private int quad(double x, double y)
-{
-    /* 
-     *    \                 /
-     *      \      1      /  
-     *        \         /    
-     *          \     /      
-     *    2       \ /        
-     *            / \      4 
-     *          /     \      
-     *        /         \    
-     *      /      3      \  
-     *    /                 \
-     */
-    if(x > y)
+    if(g1_lStick_x_abs < 0.5)
     {
-        if(x > -y)
-            return 4;
-        else
-            return 3;
+      magnitude*=1.2;
     }
-    else
-    {
-        if(x > -y)
-            return 1;
-        else
-            return 2;
-    }
+    
+    double sin1 = Math.sin(theta+45)*magnitude*1.5;
+    double sin2 = Math.sin(theta-45)*magnitude*1.5;
+    double rotation = gamepad1.right_stick_x;
+    
+    
+    telemetry.addData("theta", theta);
+    telemetry.addData("magnitude", magnitude);
+    telemetry.addData("sin1", sin1);
+    telemetry.addData("sin2", sin2);
+    
+    FLD = (sin1+rotation);FRD=(sin2-rotation);
+    BLD = (sin2+rotation);BRD=(sin1-rotation);
+    
+    FLD = FLD > 1.0 ? 1.0 : FLD;FRD = FRD > 1.0 ? 1.0 : FRD;
+    BLD = BLD > 1.0 ? 1.0 : BLD;BRD = BRD > 1.0 ? 1.0 : BRD;
+    
+    //FL.setPower(sin1+Rotation);
+    //FR.setPower(sin2-Rotation);
+    //BL.setPower(sin2+Rotation);
+    //BR.setPower(sin1-Rotation);
+    FL.setPower(FLD*0.77);FR.setPower(FRD*0.85);
+    BL.setPower(BLD*0.77);BR.setPower(BRD*1.00);
   }
 }

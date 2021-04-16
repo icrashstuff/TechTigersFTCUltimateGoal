@@ -11,7 +11,7 @@ public class ArmServos {
 
   public static double high = 0.76;
   public static double mid = 0.3;
-  public static double low = 0.104;
+  public static double low = 0.114;
   
   // This is for reasons
   public static double servoOffset = 0.120;
@@ -109,12 +109,23 @@ public class ArmServos {
   }
   
   /**
+   * Sets all servo positions to zero
+   * WARNING: THE PROGRAM SHOULD STOP IMEDIATELY AFTER CALLING
+   */
+  public static void setAllZero()
+  {
+    sLeftArm.setPosition(0.0);
+    sRightArm.setPosition(0.0);
+    sWobbleHolder.setPosition(0.0);
+  }
+  
+  /**
    * Adds servo telemetry data
    * \n NOTE: This does not update telemetry
    */
   public static void addTelemetry()
   {
-    parentOpMode.telemetry.addData("sWobbleHolder Position", sWobbleHolder.getPosition());
+    //parentOpMode.telemetry.addData("sWobbleHolder Position", sWobbleHolder.getPosition());
     parentOpMode.telemetry.addData("sLeftArm Position", sLeftArm.getPosition());
     parentOpMode.telemetry.addData("sRightArm Position", sRightArm.getPosition());
     parentOpMode.telemetry.addData("Servo offset", servoOffset);
